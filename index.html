@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramsay Referrals Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+        .form-container {
+            width: 90%;
+            max-width: 600px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 15px 0 5px;
+        }
+        input[type="text"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+        button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Ramsay Referrals Form</h1>
+        <form>
+            <!-- Facility Name -->
+            <label for="facility-name">Facility Name:</label>
+            <input type="text" id="facility-name" name="facility-name" placeholder="Enter your Ramsay Facility name">
+
+            <!-- Inpatient Services -->
+            <label>Inpatient Services:</label>
+            <div>
+                <input type="checkbox" id="service-therapy" name="services" value="Occupational Therapy">
+                <label for="service-therapy">Occupational Therapy</label>
+            </div>
+            <div>
+                <input type="checkbox" id="service-bracing" name="services" value="Casting, Splinting, or Bracing">
+                <label for="service-bracing">Casting, Splinting, or Bracing</label>
+            </div>
+            <!-- Conditional Logic for Bracing -->
+            <div id="bracing-details" class="hidden">
+                <label for="brace-type">Type of Brace:</label>
+                <input type="text" id="brace-type" name="brace-type" placeholder="Describe the brace">
+            </div>
+
+            <!-- Residence Type -->
+            <label for="residence">Residence Type:</label>
+            <select id="residence" name="residence">
+                <option value="">Select an option</option>
+                <option value="alone">Lives alone without support</option>
+                <option value="home-support">Lives at home with support</option>
+                <option value="village">Lives in a Retirement Village</option>
+                <option value="care-facility">Lives in a Residential Care Facility</option>
+                <option value="unknown">Unknown</option>
+            </select>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        // Conditional Logic Script
+        document.getElementById('service-bracing').addEventListener('change', function() {
+            const bracingDetails = document.getElementById('bracing-details');
+            if (this.checked) {
+                bracingDetails.classList.remove('hidden');
+            } else {
+                bracingDetails.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
