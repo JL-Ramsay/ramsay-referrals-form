@@ -81,7 +81,7 @@
         <h1>Ramsay Referrals Form</h1>
         <p>To ensure that the appropriate services for each site are displayed when creating referrals through the Ramsay Referrals solution, please provide the details requested below. Your input will help facilitate a smooth transition to using the solution effectively.</p>
 
-        <form action="https://script.google.com/macros/s/AKfycbxFb4QBwzVor_nUNII4tFDjg_I9v1q7NBP_5bYVCKUHtwVYZ_7HDJJWn35utMawH3yS/exec" method="POST">
+        <form action="https://script.google.com/macros/s/AKfycbyIURE992qsgo2dmYX0bzPAcYV_NFouc7mz4ClgwpMXrYweNZ0S6bvYALXfdedYv2s9/exec" method="POST">
             <!-- Facility Name -->
             <label for="facility-name">Please enter the name of your Ramsay Facility:</label>
             <input type="text" id="facility-name" name="facility-name" placeholder="Enter Facility Name">
@@ -90,7 +90,7 @@
             <h2>Please select the inpatient services available at your facility, along with the variations for each referral type. These options will be displayed as selectable choices when creating a referral:</h2>
             <ul>
                 <li>
-                    <input type="checkbox" id="occupational-therapy" name="services" value="Occupational Therapy">
+                    <input type="checkbox" id="occupational-therapy" name="services_occupational_main" value="Occupational Therapy">
                     <label for="occupational-therapy">1. Occupational Therapy</label>
                     <ul class="hidden" id="occupational-therapy-options">
                         <li><input type="checkbox" name="services_occupational" value="Lymphoedema Management"><label>Lymphoedema Management</label></li>
@@ -117,7 +117,7 @@
                     </ul>
                 </li>
                 <li>
-                    <input type="checkbox" id="physiotherapy" name="services" value="Physiotherapy">
+                    <input type="checkbox" id="physiotherapy" name="services_physiotherapy_main" value="Physiotherapy">
                     <label for="physiotherapy">2. Physiotherapy</label>
                     <ul class="hidden" id="physiotherapy-options">
                         <li><input type="checkbox" name="services_physiotherapy" value="Neurological Management"><label>Neurological Management</label></li>
@@ -142,7 +142,7 @@
                     </ul>
                 </li>
                 <li>
-                    <input type="checkbox" id="social-work" name="services" value="Social Work">
+                    <input type="checkbox" id="social-work" name="services_social_work_main" value="Social Work">
                     <label for="social-work">3. Social Work</label>
                     <ul class="hidden" id="social-work-options">
                         <li><input type="checkbox" name="services_social_work" value="Lives alone without Support"><label>Lives alone without Support</label></li>
@@ -153,7 +153,7 @@
                     </ul>
                 </li>
                 <li>
-                    <input type="checkbox" id="discharge-planning" name="services" value="Discharge Planning">
+                    <input type="checkbox" id="discharge-planning" name="services_discharge_main" value="Discharge Planning">
                     <label for="discharge-planning">4. Discharge Planning</label>
                     <ul class="hidden" id="discharge-planning-options">
                         <li><input type="checkbox" name="services_discharge" value="Residential Care Facility"><label>Lives in a Residential Care Facility</label></li>
