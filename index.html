@@ -25,9 +25,8 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
         h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
             text-align: center;
+            margin-bottom: 20px;
         }
         label {
             margin-left: 8px;
@@ -49,6 +48,7 @@
             border-radius: 4px;
         }
         button {
+            margin-top: 20px;
             padding: 10px 20px;
             background: #0056b3;
             color: white;
@@ -59,76 +59,81 @@
         button:hover {
             background: #003f80;
         }
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div class="form-container">
         <h1>Ramsay Referrals Form</h1>
         <form action="https://formspree.io/f/xvgoqypg" method="POST">
+            <!-- Facility Name -->
+            <label for="facility-name">Please enter the name of your Ramsay Facility below:</label>
+            <input type="text" id="facility-name" name="facility-name" placeholder="Enter Facility Name">
+
+            <!-- Services -->
+            <h2>Please select the inpatient services available at your facility:</h2>
             <ul>
                 <li>
                     <input type="checkbox" id="occupational-therapy" name="services" value="Occupational Therapy">
-                    <label for="occupational-therapy">Occupational Therapy</label>
-                    <ul>
+                    <label for="occupational-therapy">1. Occupational Therapy</label>
+                    <ul class="hidden" id="occupational-therapy-options">
                         <li><input type="checkbox" name="services" value="Lymphoedema Management"><label>Lymphoedema Management</label></li>
                         <li><input type="checkbox" name="services" value="Hand Therapy or Splinting"><label>Hand Therapy or Splinting</label></li>
                         <li><input type="checkbox" name="services" value="NDIS"><label>NDIS</label></li>
                         <li><input type="checkbox" name="services" value="Post-Stroke Management"><label>Post-Stroke Management</label></li>
-                        <li><input type="checkbox" name="services" value="Personal Care or ADL Assessment"><label>Personal Care or ADL Assessment</label></li>
-                        <li><input type="checkbox" name="services" value="Post Surgical Management"><label>Post Surgical Management</label></li>
-                        <li><input type="checkbox" name="services" value="Pressure Care Management"><label>Pressure Care Management</label></li>
-                        <li><input type="checkbox" name="services" value="Upper Limb Assessment and Management"><label>Upper Limb Assessment and Management</label></li>
-                        <li><input type="checkbox" name="services" value="Cognitive/Delirium Screening"><label>Cognitive/Delirium Screening and/or Management</label></li>
-                        <li><input type="checkbox" name="services" value="Equipment Prescription"><label>Equipment Prescription</label></li>
-                        <li><input type="checkbox" name="services" value="Energy Conservation"><label>Energy Conservation</label></li>
-                        <li><input type="checkbox" name="services" value="Home Visit"><label>Home Visit</label></li>
-                        <li><input type="checkbox" name="services" value="Palliative Care Discharge"><label>Palliative Care Discharge</label></li>
-                        <li>
-                            <input type="checkbox" name="services" value="Other">
-                            <label>Other</label>
-                            <input type="text" name="other-occupational-therapy" placeholder="Specify">
+                        <li><input type="checkbox" name="services" value="Other">
+                            <label>Other</label><input type="text" name="occupational-other" placeholder="Specify">
                         </li>
                     </ul>
                 </li>
                 <li>
                     <input type="checkbox" id="physiotherapy" name="services" value="Physiotherapy">
-                    <label for="physiotherapy">Physiotherapy</label>
-                    <ul>
+                    <label for="physiotherapy">2. Physiotherapy</label>
+                    <ul class="hidden" id="physiotherapy-options">
                         <li><input type="checkbox" name="services" value="Neurological Management"><label>Neurological Management</label></li>
-                        <li><input type="checkbox" name="services" value="Post-Stroke Management (Non-Stroke Ward)"><label>Post-Stroke Management (for patient NOT in stroke ward)</label></li>
-                        <li>
-                            <input type="checkbox" name="services" value="Respiratory Assessment">
+                        <li><input type="checkbox" name="services" value="Post-Stroke Management (Non-Stroke Ward)"><label>Post-Stroke Management (Non-Stroke Ward)</label></li>
+                        <li><input type="checkbox" name="services" value="Respiratory Assessment">
                             <label>Respiratory Assessment</label>
                             <ul>
-                                <li><input type="checkbox" name="services" value="Altered Respiratory Function"><label>Altered / decreased respiratory function</label></li>
-                                <li><input type="checkbox" name="services" value="Oxygen Requirements"><label>Oxygen requirements</label></li>
-                                <li><input type="checkbox" name="services" value="Difficulty Clearing Secretions"><label>Difficulty clearing secretions</label></li>
+                                <li><input type="checkbox" name="services" value="Altered / Decreased Respiratory Function"><label>Altered / Decreased Respiratory Function</label></li>
+                                <li><input type="checkbox" name="services" value="Oxygen Requirements"><label>Oxygen Requirements</label></li>
+                                <li><input type="checkbox" name="services" value="Difficulty Clearing Secretions"><label>Difficulty Clearing Secretions</label></li>
                             </ul>
                         </li>
-                        <li><input type="checkbox" name="services" value="Vestibular Assessment"><label>Vestibular Assessment</label></li>
-                        <li><input type="checkbox" name="services" value="Post-Natal Management"><label>Post-Natal Management</label></li>
-                        <li>
-                            <input type="checkbox" name="services" value="Casting, Splinting, or Bracing">
+                        <li><input type="checkbox" name="services" value="Casting, Splinting, or Bracing">
                             <label>Casting, Splinting, or Bracing (Including Spinal)</label>
                             <ul>
-                                <li>
-                                    <input type="checkbox" name="services" value="Type of Brace">
-                                    <label>Type of brace</label>
-                                    <input type="text" name="brace-type" placeholder="Specify">
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="services" value="Describe Brace Order">
-                                    <label>Please describe brace order</label>
-                                    <input type="text" name="brace-description" placeholder="Specify">
-                                </li>
+                                <li><input type="checkbox" name="services" value="Type of Brace"><label>Type of Brace</label><input type="text" name="brace-type" placeholder="Specify"></li>
+                                <li><input type="checkbox" name="services" value="Describe Brace Order"><label>Describe Brace Order</label><input type="text" name="brace-order" placeholder="Specify"></li>
                             </ul>
                         </li>
                     </ul>
                 </li>
-                <!-- Add Social Work and Discharge Planning here following the same pattern -->
+                <li>
+                    <input type="checkbox" id="social-work" name="services" value="Social Work">
+                    <label for="social-work">3. Social Work</label>
+                    <ul class="hidden" id="social-work-options">
+                        <li><input type="checkbox" name="services" value="Lives Alone"><label>Lives Alone</label></li>
+                        <li><input type="checkbox" name="services" value="Home Support"><label>Lives at Home with Support</label></li>
+                    </ul>
+                </li>
             </ul>
             <button type="submit">Submit</button>
         </form>
     </div>
+    <script>
+        // Show/Hide Sub-options
+        const mainCheckboxes = document.querySelectorAll("input[type='checkbox']");
+        mainCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function () {
+                const sublist = this.parentElement.querySelector('ul');
+                if (sublist) {
+                    sublist.classList.toggle('hidden', !this.checked);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
