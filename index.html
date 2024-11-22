@@ -7,6 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            font-size: 16px; /* Base font size increased */
             margin: 0;
             padding: 0;
             display: flex;
@@ -26,6 +27,15 @@
         }
         h1 {
             text-align: center;
+            font-size: 24px; /* Increased */
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 20px; /* Increased */
+            margin-top: 20px;
+        }
+        p {
+            font-size: 18px; /* Increased */
             margin-bottom: 20px;
         }
         label {
@@ -34,6 +44,12 @@
         ul {
             list-style-type: none;
             padding: 0;
+        }
+        ul ul {
+            margin-left: 20px; /* Indentation for sub-questions */
+        }
+        ul ul ul {
+            margin-left: 20px; /* Further indentation for deeper levels */
         }
         li {
             margin-bottom: 8px;
@@ -67,13 +83,15 @@
 <body>
     <div class="form-container">
         <h1>Ramsay Referrals Form</h1>
+        <p>To ensure that the appropriate services for each site are displayed when creating referrals through the Ramsay Referrals solution, please provide the details requested below. Your input will help facilitate a smooth transition to using the solution effectively.</p>
+
         <form action="https://formspree.io/f/xvgoqypg" method="POST">
             <!-- Facility Name -->
             <label for="facility-name">Please enter the name of your Ramsay Facility below:</label>
             <input type="text" id="facility-name" name="facility-name" placeholder="Enter Facility Name">
 
             <!-- Services -->
-            <h2>Please select the inpatient services available at your facility:</h2>
+            <h2>2. Please select the inpatient services available at your facility, along with the variations for each referral type. These options will be displayed as selectable choices when creating a referral:</h2>
             <ul>
                 <li>
                     <input type="checkbox" id="occupational-therapy" name="services" value="Occupational Therapy">
@@ -109,14 +127,6 @@
                                 <li><input type="checkbox" name="services" value="Describe Brace Order"><label>Describe Brace Order</label><input type="text" name="brace-order" placeholder="Specify"></li>
                             </ul>
                         </li>
-                    </ul>
-                </li>
-                <li>
-                    <input type="checkbox" id="social-work" name="services" value="Social Work">
-                    <label for="social-work">3. Social Work</label>
-                    <ul class="hidden" id="social-work-options">
-                        <li><input type="checkbox" name="services" value="Lives Alone"><label>Lives Alone</label></li>
-                        <li><input type="checkbox" name="services" value="Home Support"><label>Lives at Home with Support</label></li>
                     </ul>
                 </li>
             </ul>
