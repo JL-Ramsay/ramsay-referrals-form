@@ -26,9 +26,19 @@
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        .header img {
+            max-height: 50px;
+            margin-right: 10px;
+        }
         h1, h2 {
             text-align: center;
-            margin-bottom: 10px;
+            margin: 0;
         }
         p {
             font-size: 18px;
@@ -72,7 +82,10 @@
 </head>
 <body>
     <div class="form-container" id="form-container">
-        <h1>Ramsay Referrals Form</h1>
+        <div class="header">
+            <img src="images/logo.png" alt="Logo">
+            <h1>Ramsay Referrals Form</h1>
+        </div>
         <p>To ensure that the appropriate services for each site are displayed when creating referrals through the Ramsay Referrals solution, please provide the details requested below. Your input will help facilitate a smooth transition to using the solution effectively.</p>
 
         <form id="referral-form" action="https://script.google.com/macros/s/AKfycbyyAQ4yn6ADSVM8HcehYWE09g0sHJTyKUVRa3WKvGSGf9jA7beGIqGVHVB-m5cVsJzU/exec" method="POST">
