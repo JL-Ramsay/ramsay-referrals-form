@@ -33,6 +33,7 @@
         p {
             font-size: 18px;
             margin-bottom: 20px;
+            margin-left: 20px;
         }
         label {
             margin-left: 8px;
@@ -46,18 +47,6 @@
         }
         ul ul ul {
             margin-left: 20px;
-        }
-        li {
-            margin-bottom: 8px;
-        }
-        input[type="checkbox"] {
-            margin-right: 10px;
-        }
-        input[type="text"] {
-            margin-left: 20px;
-            padding: 5px;
-            border: none;
-            border-radius: 4px;
         }
         button {
             margin-top: 20px;
@@ -74,20 +63,25 @@
         .hidden {
             display: none;
         }
+        /* New styles for the label */
+        label[for="facility-name"] {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
-    <div class="form-container">
+    <div class="form-container" id="form-container">
         <h1>Ramsay Referrals Form</h1>
         <p>To ensure that the appropriate services for each site are displayed when creating referrals through the Ramsay Referrals solution, please provide the details requested below. Your input will help facilitate a smooth transition to using the solution effectively.</p>
 
-        <form action="https://script.google.com/macros/s/AKfycbyyAQ4yn6ADSVM8HcehYWE09g0sHJTyKUVRa3WKvGSGf9jA7beGIqGVHVB-m5cVsJzU/exec" method="POST">
+        <form id="referral-form" action="https://script.google.com/macros/s/AKfycbyyAQ4yn6ADSVM8HcehYWE09g0sHJTyKUVRa3WKvGSGf9jA7beGIqGVHVB-m5cVsJzU/exec" method="POST">
             <!-- Facility Name -->
             <label for="facility-name">Please enter the name of your Ramsay Facility:</label>
-            <input type="text" id="facility-name" name="facility-name" placeholder="Enter Facility Name">
+            <input type="text" id="facility-name" name="facility-name" placeholder="Enter Facility Name" required>
 
             <!-- Services -->
-            <h2>Please select the inpatient services available at your facility, along with the variations for each referral type. These options will be displayed as selectable choices when creating a referral:</h2>
+            <p>Please select the inpatient services available at your facility, along with the variations for each referral type. These options will be displayed as selectable choices when creating a referral:</p>
             <ul>
                 <li>
                     <input type="checkbox" id="occupational-therapy" name="services_occupational_main" value="Occupational Therapy">
@@ -181,6 +175,14 @@
             <button type="submit">Submit</button>
         </form>
     </div>
+    <div class="form-container hidden" id="sending-message">
+        <h1>Sending...</h1>
+    </div>
+    <div class="form-container hidden" id="success-message">
+        <h1>Success</h1>
+        <p>The form has successfully been submitted. Thank you.</p>
+        <button onclick="submitAnotherForm()">Submit another form</button>
+    </div>
     <script>
         // Show/Hide Sub-options
         const mainCheckboxes = document.querySelectorAll("input[type='checkbox']");
@@ -192,6 +194,47 @@
                 }
             });
         });
+
+        // Handle form submission
+        const form = document.getElementById('referral-form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            document.getElementById('form-container').classList.add('hidden');
+            document.getElementById('sending-message').classList.remove('hidden');
+            const formData = new FormData(form);
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.text())
+            .then(result => {
+                document.getElementById('sending-message').classList.add('hidden');
+                if (result.includes('Success')) {
+                    document.getElementById('success-message').classList.remove('hidden');
+                } else {
+                    document.getElementById('form-container').classList.remove('hidden');
+                    alert('There was an error submitting the form. Please try again.');
+                }
+            })
+            .catch(error => {
+                document.getElementById('sending-message').classList.add('hidden');
+                document.getElementById('form-container').classList.remove('hidden');
+                console.error('Error:', error);
+                alert('There was an error submitting the form. Please try again.');
+            });
+        });
+
+        // Function to submit another form
+        function submitAnotherForm() {
+            document.getElementById('success-message').classList.add('hidden');
+            document.getElementById('form-container').classList.remove('hidden');
+            form.reset();
+            // Collapse all sub-options
+            const sublists = document.querySelectorAll("ul ul");
+            sublists.forEach(sublist => {
+                sublist.classList.add('hidden');
+            });
+        }
     </script>
 </body>
 </html>
